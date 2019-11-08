@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+        // Data is from this sheet:  https://docs.google.com/spreadsheets/d/1CneG6Wji5TTT4KTYZebbOTbewwbCcupQx4OUFsHl2ig/edit#gid=0
+        // Sheet URL can be obtained by navigating to file > publish to web 
+        // Then select the sheet to publish and 'Comma-separated values (.csv)'
+        // Press 'Publish' then 'ok' to get the URL 
+        const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSNZkONabqTqXqh38jy021AgklatUGDN-tRU5YV55sYG9mWxAuS0-FlJ5l_QNhdqrWWmiCoqarOGuae/pub?gid=0&single=true&output=csv'
+        d3.csv(googleSheetURL).then(data => {
+            console.log("data", data)
+
+            //Do something with the data such as displaying on screen
+            const body = document.getElementById("app")
+            body.innerHTML = JSON.stringify(data)
+        }).catch((error) => {
+            console.error("Got error", error)
+        })
+    </script>
+</head>
+
+<body id="app"></body>
